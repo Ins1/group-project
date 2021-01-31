@@ -4,6 +4,65 @@
    Description: Custom JS file
 */
 
+var $element = $('.our-cources .owl-carousel');
+if ($element.length > 0) {
+    $element.owlCarousel({
+        loop: true,
+        margin: 30,
+        navText: ['', ''],
+        nav: true,
+        autoplay: true,
+        smartSpeed: 1000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+
+            480: {
+                items: 2,
+                margin: 20
+            },
+
+            768: {
+                items: 3,
+                margin: 20
+            },
+
+            1024: {
+                items: 4,
+                margin: 0
+            },
+        }
+    });
+}
+var $groups = {};
+var $gallery = $('.galleryItem');
+$gallery.each(function () {
+    var id = parseInt($(this)
+        .attr('data-group'), 10);
+    if (!$groups[id]) {
+        $groups[id] = [];
+    }
+    $groups[id].push(this);
+});
+$.each($groups, function () {
+    $(this)
+        .magnificPopup({
+            type: 'image',
+            closeOnContentClick: true,
+            gallery: {
+                enabled: true
+            }
+        })
+});
+var $element = $('.news-listing');
+if ($element.length > 0) {
+    $element.masonry({
+        itemSelector: '.grid-item',
+        percentPosition: true
+    });
+}
 
 (function($) {
     "use strict"; 
